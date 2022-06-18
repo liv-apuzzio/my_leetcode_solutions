@@ -1,0 +1,18 @@
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        vec = []
+        maxval = arr.index(max(arr))
+        i = 0
+        j = len(arr) - 1
+        if (len(arr) < 3):
+            return False
+        if sorted(arr) == arr or arr[::-1] == sorted(arr):
+            return False
+        else:
+            while (i < maxval):
+                vec.append(arr[i] < arr[i + 1])
+                i = i + 1
+            while (j >  maxval):
+                vec.append(arr[j] < arr[j - 1])
+                j = j - 1
+            return(all(vec))
